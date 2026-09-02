@@ -24,5 +24,17 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
+    /**
+     * Use for negative tests where login is expected to fail
+     * and the browser is expected to stay on the login page.
+     */
+    public void attemptLogin(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickLogin();
+    }
+
     public boolean isErrorDisplayed() { return isDisplayed(errorMessage); }
+
+    public String getErrorMessage() { return getText(errorMessage); }
 }
